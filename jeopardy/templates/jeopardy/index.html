@@ -1,9 +1,10 @@
-{% if clue_list %}
-    <ul>
-    {% for clue in clue_list %}
-        <li><a href="/jeopardy/{{ clue.id }}/">{{ clue.text|safe }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No questions are available.</p>
-{% endif %}
+{% for category in category_list %}
+	<h2>{{ category.name|safe }}</h2>
+	<ul>
+	{% for clue in clue_list %}
+		{% if clue.category == category.id %}
+		<li><a href="/jeopardy/{{ clue.id }}/">{{ clue.text|safe }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% endfor %}

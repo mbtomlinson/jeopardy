@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponse
-from .models import Clue
+from .models import Clue, Category
 
 
 def index(request):
-    clue_list = Clue.objects.order_by('-id')[:20]
-    context = {'clue_list': clue_list}
+    category_list = Category.objects.filter(game=1)
+    clue_list = Clue.objects.filter(game=1)
+    context = {'clue_list': clue_list, 'category_list': category_list}
     return render(request, 'jeopardy/index.html', context)
 
 def detail(request, clue_id):
