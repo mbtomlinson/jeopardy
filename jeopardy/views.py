@@ -4,7 +4,7 @@ from .models import Clue, Category
 
 
 def index(request):
-    category_list = Category.objects.filter(game=3, round=1)
+    category_list = Category.objects.filter(game=3, round=0)
     clue_list = Clue.objects.filter(game=3)
     context = {'clue_list': clue_list, 'category_list': category_list}
     return render(request, 'jeopardy/index.html', context)
