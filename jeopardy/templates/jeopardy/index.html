@@ -1,13 +1,9 @@
 {% extends "jeopardy/header.html" %}
-
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'jeopardy/css/bootstrap.min.css' %}" type = "text/css"/>
-	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-
 {% block content %}
 <h1>Jeopardy Round</h1>
 {% for category in category_list %}
-	<h3>{{ category.name|safe }}</h3>
+
+<h3>{{ category.name|safe }}</h3>
 	<ul>
 	{% for clue in clue_list %}
 		{% if clue.category == category.id %}
