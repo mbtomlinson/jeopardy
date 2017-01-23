@@ -7,7 +7,7 @@
 	<ul>
 	{% for clue in clue_list %}
 		{% if clue.category == category.id %}
-		<li><a href="/jeopardy/{{ clue.id }}/">{{ clue.value }}: {{ clue.text|safe }}</a></li>
+		<li><a href="/jeopardy/{{ clue.id }}/">${{ clue.value }}: {{ clue.text|safe }}</a></li>
 		{% endif %}
 	{% endfor %}
 	</ul>

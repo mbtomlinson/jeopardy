@@ -3,8 +3,9 @@ from django.http import Http404, HttpResponse
 from .models import Clue, Category
 
 
-def index(request):
-    category_list = Category.objects.filter(game=3, round=0)
+def index(request, round_name):
+    round_dict={'jeopardy':0,'doublejeopardy':1,'finaljeopardy':2}
+    category_list = Category.objects.filter(game=3, round=round_dict[round_name])
     clue_list = Clue.objects.filter(game=3)
     context = {'clue_list': clue_list, 'category_list': category_list}
     return render(request, 'jeopardy/index.html', context)
