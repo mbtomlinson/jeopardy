@@ -3,13 +3,14 @@ from django.http import Http404, HttpResponse
 from .models import Clue, Category
 
 
-def index(request, round_name):
+def index(request, url_round_name):
     round_dict={'jeopardy':0,'doublejeopardy':1,'finaljeopardy':2}
-    category_list = Category.objects.filter(game=3, round=round_dict[round_name])
+    category_list = Category.objects.filter(game=3, round=round_dict[url_round_name])
     clue_list = Clue.objects.filter(game=3)
-    round_name = ' J'.join(round_name.split("j")) + ' Round'
+    round_name = ' J'.join(url_round_name.split("j")) + ' Round'
     round_name = round_name.title()
-    context = {'clue_list': clue_list, 'category_list': category_list, 'round_name': round_name}
+    context = {'clue_list': clue_list, 'category_list': category_list,
+               'round_name': round_name,'url_round_name': url_round_name}
     return render(request, 'jeopardy/index.html', context)
 
 def detail(request, clue_id):

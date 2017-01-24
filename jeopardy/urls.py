@@ -3,9 +3,11 @@ from . import views
 
 app_name = 'jeopardy'
 urlpatterns = [
-    url(r'^(?P<round_name>[\w]+)/$', views.index, name = 'index'),
+    url(r'^(?P<url_round_name>[\w]+)/$', views.index, name = 'index'),
     # ex: /jeopardy/5/
-    url(r'^(?P<clue_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^jeopardy/(?P<clue_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^doublejeopardy/(?P<clue_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^finaljeopardy/(?P<clue_id>[0-9]+)/$', views.detail, name='detail'),
     # ex: /jeopardy/5/results/
     url(r'^(?P<clue_id>[0-9]+)/result/$', views.result, name='result'),
     # ex: /jeopardy/5/answer/
