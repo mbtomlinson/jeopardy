@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponse
 from .models import Clue, Category
 
-
 def index(request, url_round_name):
     round_dict={'jeopardy':0,'doublejeopardy':1,'finaljeopardy':2}
     category_list = Category.objects.filter(game=3, round=round_dict[url_round_name])
@@ -13,7 +12,7 @@ def index(request, url_round_name):
                'round_name': round_name,'url_round_name': url_round_name}
     return render(request, 'jeopardy/index.html', context)
 
-def detail(request, clue_id):
+def detail(request, clue_id, url_round_name):
     clue = get_object_or_404(Clue, pk=clue_id)
     return render(request, 'jeopardy/detail.html', {'clue': clue})
 
