@@ -7,7 +7,9 @@ def index(request, round_name):
     round_dict={'jeopardy':0,'doublejeopardy':1,'finaljeopardy':2}
     category_list = Category.objects.filter(game=3, round=round_dict[round_name])
     clue_list = Clue.objects.filter(game=3)
-    context = {'clue_list': clue_list, 'category_list': category_list}
+    round_name = ' J'.join(round_name.split("j")) + ' Round'
+    round_name = round_name.title()
+    context = {'clue_list': clue_list, 'category_list': category_list, 'round_name': round_name}
     return render(request, 'jeopardy/index.html', context)
 
 def detail(request, clue_id):

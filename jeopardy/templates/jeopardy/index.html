@@ -1,6 +1,6 @@
 {% extends "jeopardy/header.html" %}
 {% block content %}
-<h1>Jeopardy Round</h1>
+<h1>{{ round_name }}</h1>
 {% for category in category_list %}
 
 <h3>{{ category.name|safe }}</h3>
